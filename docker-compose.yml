@@ -15,7 +15,7 @@ services:
     - solr
 
   lds-browser:
-    image: statisticsnorway/lds-browser-dev
+    image: descoped/lds-browser-dev
     ports:
       - "8000:80"
     depends_on:

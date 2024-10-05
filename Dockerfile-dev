@@ -40,7 +40,7 @@ EXPOSE 9090
 
 CMD ["./run.sh"]
 
-FROM statisticsnorway/raml-to-jsonschema:latest AS gsim-convert
+FROM descoped/raml-to-jsonschema:latest AS gsim-convert
 
 ARG GSIM_VERSION
 RUN apk update && \
@@ -48,7 +48,7 @@ RUN apk update && \
     apk add git
 
 # Fetch the latest schema
-RUN git clone https://github.com/statisticsnorway/gsim-raml-schema /gsim
+RUN git clone https://github.com/descoped/gsim-raml-schema /gsim
 RUN git -C /gsim checkout ${GSIM_VERSION:-HEAD}
 
 WORKDIR /gsim

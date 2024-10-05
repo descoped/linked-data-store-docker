@@ -1,4 +1,4 @@
-FROM statisticsnorway/lds-server-base:latest as build
+FROM descoped/lds-server-base:latest as build
 
 #
 # Build LDS Server

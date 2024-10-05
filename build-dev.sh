@@ -1,23 +1,23 @@
 #!/usr/bin/env bash
 
-for i in statisticsnorway/lds-browser-dev neo4j:4 postgres:12-alpine solr adminer; do
+for i in descoped/lds-browser-dev neo4j:4 postgres:12-alpine solr adminer; do
   docker pull $i &
 done
 
 if [ ! -d "gsim-raml-schema" ]; then
   echo "Cloning GSIM information model...";
-  git clone https://github.com/statisticsnorway/gsim-raml-schema.git
-  docker run -v $(pwd)/gsim-raml-schema:/raml-project statisticsnorway/raml-to-jsonschema
+  git clone https://github.com/descoped/gsim-raml-schema.git
+  docker run -v $(pwd)/gsim-raml-schema:/raml-project descoped/raml-to-jsonschema
 else
   echo "Pulling GSIM information model changes...";
   cd gsim-raml-schema
   LAST_COMMIT_BEFORE=$(git log -1 "--format=format:%H")
-  git pull --rebase https://github.com/statisticsnorway/gsim-raml-schema
+  git pull --rebase https://github.com/descoped/gsim-raml-schema
   LAST_COMMIT_AFTER=$(git log -1 "--format=format:%H")
   if [ "$LAST_COMMIT_BEFORE" != "$LAST_COMMIT_AFTER" ] || [ ! -d "jsonschemas" ] || [ -z "$(ls -A jsonschemas)" ]; then
     echo "Re-generating schema files..."
     rm -rf jsonschemas
-    docker run -v $(pwd):/raml-project statisticsnorway/raml-to-jsonschema
+    docker run -v $(pwd):/raml-project descoped/raml-to-jsonschema
   fi
   cd -
 fi
