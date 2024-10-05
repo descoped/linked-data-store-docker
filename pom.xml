@@ -55,6 +55,14 @@
         <tag>HEAD</tag>
     </scm>
 
+    <repositories>
+        <repository>
+            <id>cantara-releases</id>
+            <name>Cantara Release Repository</name>
+            <url>https://mvnrepo.cantara.no/content/repositories/releases/</url>
+        </repository>
+    </repositories>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -77,7 +85,7 @@
             <artifactId>linked-data-store-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>no.ssb.saga</groupId>
+            <groupId>no.cantara.saga</groupId>
             <artifactId>sagalog-postgres</artifactId>
             <scope>runtime</scope>
         </dependency>
