@@ -3,8 +3,8 @@ module io.descoped.lds.server {
     requires io.descoped.dynamic.config;
     requires org.slf4j;
     requires org.apache.commons.logging; // needed to use the solr search provider
-    requires no.ssb.rawdata.api;
-    requires no.ssb.service.provider.api;
+    requires io.descoped.rawdata.api;
+    requires io.descoped.service.provider.api;
 
-    uses no.ssb.rawdata.api.RawdataClientInitializer;
+    uses io.descoped.rawdata.api.RawdataClientInitializer;
 }
